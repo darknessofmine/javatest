@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers</title>
+</head>
+<body>
+    <form method="post" action="create">
+        <h2>Create new customer</h2>
+        <p><input type="text" name="name" placeholder="name"></p>
+        <p><input type="text" name="email" placeholder="email"></p>
+        <p><input type="text" name="address" placeholder="address"></p>
+        <button type="submit">Create customer</button>
+    </form>
+    <br>
+    <br>
+
+    <h2>All customers</h2>
+    <form method="post" action="filter">
+        <input type="text" name="keyword">
+        <button type="submit">Filter</button>
+    </form>
+
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>ADDRESS</th>
+            <th>NOTHING</th>
+        </tr>
+        {{ #customers }}
+        <tr>
+            <td>{{ id }}</td>
+            <td>{{ name }}</td>
+            <td>{{ email }}</td>
+            <td>{{ address }}</td>
+            <td>
+                <a href="/edit?id={{ id }}">EDIT</a>
+                <a href="/delete?id={{ id }}">DELETE</a>
+
+            </td>
+        </tr>
+        {{ /customers }}
+    </table>
+</body>
+</html>
